@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     getJoke()
-    getJokeRandom()
   }, [])
 
   async function handleForm() {
@@ -30,6 +29,7 @@ function App() {
 
   async function getJokeRandom() {
     const res = await getAPI("random")
+    console.log("🚀 ~ getJokeRandom ~ res:", res)
     res.question && (setRandomQuestion(res.question), setRandomResponse(res.response))
   }
 
@@ -60,7 +60,7 @@ function App() {
           <hr />
         </div>
       ))}
-      <h2>Blague au hasard</h2>
+      <button onClick={()=>getJokeRandom()}>Blague au hasard</button>
       <p> {randomQuestion} </p>
       <p> {randomResponse} </p>
       <h2>Blague par id</h2>
